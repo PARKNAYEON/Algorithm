@@ -9,7 +9,7 @@ queue<pair<pair<int, int>, int>> q;
 bool check[202][202][202] = { false, };
 
 void bfs() {
-	
+
 	q.push(make_pair(make_pair(0, 0), C));
 
 	while (!q.empty()) {
@@ -32,7 +32,7 @@ void bfs() {
 			q.push(make_pair(make_pair((a + b) - B, B), c));
 		else
 			q.push(make_pair(make_pair(0, a + b), c));
-		
+
 		//a->c
 		if (a + c > C)
 			q.push(make_pair(make_pair((a + c) - C, b), C));
@@ -49,7 +49,7 @@ void bfs() {
 		if (b + c > C)
 			q.push(make_pair(make_pair(a, (b + c) - C), C));
 		else
-			q.push(make_pair(make_pair(a, b + c), 0));
+			q.push(make_pair(make_pair(a, 0), b + c));
 
 		//c->a
 		if (c + a > A)
@@ -70,16 +70,14 @@ void bfs() {
 
 
 int main() {
-	
+
 	cin >> A >> B >> C;
 	bfs();
 	sort(water.begin(), water.end());
 
-	for (int i = 1; i < water.size(); i++)
+	for (int i = 0; i < water.size(); i++)
 	{
-		cout << water[i] << endl;
+		cout << water[i] << ' ';
 	}
 
 }
-
-//백준에서 틀렸다고 뜸. 어떤 예외처리를 안해줬는지 모르겠음
